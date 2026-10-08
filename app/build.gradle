@@ -7,10 +7,7 @@ android {
     namespace 'com.whisperonnx'
     compileSdk 35
 
-    lintOptions{
-        disable 'MissingTranslation'
-    }
-    
+
     defaultConfig {
         applicationId "org.woheller69.whisperplus"
         minSdk 28
@@ -51,6 +48,9 @@ android {
         includeInApk = false
         // Disable including dependency metadata when building Android App Bundles
         includeInBundle = false
+    }
+    lint {
+        disable 'MissingTranslation'
     }
 }
 
