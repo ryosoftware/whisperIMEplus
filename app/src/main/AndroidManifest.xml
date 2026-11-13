@@ -51,7 +51,7 @@
             android:launchMode="standard"
             android:visibleToInstantApps="true"
             android:theme="@style/Theme.WhisperFloating"
-            android:configChanges="orientation|screenLayout|screenSize|keyboardHidden|keyboard|uiMode|density">
+            android:configChanges="orientation|screenLayout|screenSize|keyboardHidden|keyboard|density">
             <intent-filter>
                 <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
                 <action android:name="android.speech.action.WEB_SEARCH" />
@@ -89,7 +89,7 @@
         </service>
 
         <activity android:name="com.whisperonnx.SettingsActivity"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
             android:theme="@style/Theme.Whisper.ActionBar"
             android:label="@string/settings"
             android:exported="true">
