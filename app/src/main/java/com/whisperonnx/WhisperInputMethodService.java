@@ -58,6 +58,7 @@ public class WhisperInputMethodService extends InputMethodService {
     private CountDownTimer countDownTimer;
     private static boolean translate = false;
     private boolean modeAuto = false;
+    private boolean modelInitPending = false;
     private RelativeLayout layoutButtons;
 
     public WhisperInputMethodService() {
@@ -93,8 +94,14 @@ public class WhisperInputMethodService extends InputMethodService {
     @Override
     public void onStartInputView(EditorInfo attribute, boolean restarting){
 
-        if (mWhisper == null)  initModel();
         if (btnLang1 != null) updateLanguageUi();
+        if (mWhisper == null && !modelInitPending) {
+            modelInitPending = true;
+            handler.post(() -> {
+                modelInitPending = false;
+                if (mWhisper == null) initModel();
+            });
+        }
 
     }
 
@@ -135,6 +142,7 @@ public class WhisperInputMethodService extends InputMethodService {
             mlp.bottomMargin = insets.bottom;
             mlp.rightMargin = insets.right;
             v.setLayoutParams(mlp);
+            v.post(v::requestLayout);
 
             return WindowInsetsCompat.CONSUMED;
         });
@@ -251,7 +259,10 @@ public class WhisperInputMethodService extends InputMethodService {
                 // Pressed
                 handler.post(() -> btnRecord.setBackgroundResource(R.drawable.rounded_button_background_pressed));
                 if (checkRecordPermission()){
-                    if (!mWhisper.isInProgress()) {
+                    if (mWhisper == null) {
+                        tvStatus.setText(getString(R.string.please_wait));
+                        tvStatus.setVisibility(View.VISIBLE);
+                    } else if (!mWhisper.isInProgress()) {
                         HapticFeedback.vibrate(this);
                         startRecording();
                         handler.post(() -> processingBar.setProgress(100));
