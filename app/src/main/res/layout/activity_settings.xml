@@ -29,7 +29,8 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_counter_1_off_36dp"
+                    android:src="@drawable/ic_counter_1_36dp"
+                    android:tint="?attr/colorOnSurfaceVariant"
                     android:contentDescription="@string/lang1"/>
 
                 <TextView
@@ -38,7 +39,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorPrimary"
                     android:text="@string/language" />
 
                 <Spinner
@@ -59,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_counter_2_off_36dp"
+                    android:src="@drawable/ic_counter_2_36dp"
+                    android:tint="?attr/colorOnSurfaceVariant"
                     android:contentDescription="@string/lang1"/>
 
                 <TextView
@@ -68,7 +70,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorPrimary"
                     android:text="@string/language" />
 
                 <Spinner
@@ -90,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorPrimary"
                     android:text="@string/simple_chinese" />
 
                 <CheckBox
@@ -123,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorPrimary"
                     android:text="@string/language" />
 
                 <Spinner
@@ -143,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorPrimary"
                     android:text="@string/simple_chinese" />
 
                 <CheckBox
@@ -168,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textSize="16sp"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/colorPrimary"
                 android:text="@string/settings_minimum_silence" />
 
             <com.google.android.material.slider.RangeSlider
@@ -191,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorPrimary"
                     android:text="@string/setting_bluetooth" />
 
                 <CheckBox

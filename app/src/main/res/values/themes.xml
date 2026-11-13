@@ -1,12 +1,12 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.Whisper.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Whisper.NoActionBar" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:windowBackground">@color/windowBackground</item>
     </style>
 
     <!-- Base application theme. -->
-    <style name="Theme.Whisper.ActionBar" parent="Theme.Material3.DayNight">
+    <style name="Theme.Whisper.ActionBar" parent="Theme.Material3.DynamicColors.DayNight">
         <!-- Customize your light theme here. -->
         <item name="android:windowBackground">@color/windowBackground</item>
     </style>

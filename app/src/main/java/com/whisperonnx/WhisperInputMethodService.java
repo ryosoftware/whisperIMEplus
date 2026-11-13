@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.inputmethodservice.InputMethodService;
 
 import android.os.CountDownTimer;
@@ -34,6 +35,7 @@ import com.whisperonnx.asr.Recorder;
 import com.whisperonnx.asr.Whisper;
 import com.whisperonnx.asr.WhisperResult;
 import com.whisperonnx.utils.HapticFeedback;
+import com.whisperonnx.utils.ThemeUtils;
 
 public class WhisperInputMethodService extends InputMethodService {
     private static final String TAG = "WhisperInputMethodService";
@@ -57,6 +59,10 @@ public class WhisperInputMethodService extends InputMethodService {
     private static boolean translate = false;
     private boolean modeAuto = false;
     private RelativeLayout layoutButtons;
+
+    public WhisperInputMethodService() {
+        setTheme(R.style.Theme_Whisper_NoActionBar);
+    }
 
     @Override
     public void onCreate() {
@@ -90,6 +96,18 @@ public class WhisperInputMethodService extends InputMethodService {
         if (mWhisper == null)  initModel();
         if (btnLang1 != null) updateLanguageUi();
 
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        handler.post(this::applyPrimaryIconTints);
+    }
+
+    private void applyPrimaryIconTints() {
+        if (btnRecord != null) ThemeUtils.setOnPrimaryIconTint(btnRecord);
+        if (btnDel != null) ThemeUtils.setOnPrimaryIconTint(btnDel);
+        if (btnEnter != null) ThemeUtils.setOnPrimaryIconTint(btnEnter);
     }
 
 
@@ -131,11 +149,14 @@ public class WhisperInputMethodService extends InputMethodService {
         btnLang1 = view.findViewById(R.id.btnLang1);
         btnLang2 = view.findViewById(R.id.btnLang2);
         updateLanguageUi();
+        applyPrimaryIconTints();
         processingBar = view.findViewById(R.id.processing_bar);
         tvStatus = view.findViewById(R.id.tv_status);
-        btnTranslate.setImageResource(translate ? R.drawable.ic_english_on_36dp : R.drawable.ic_english_off_36dp);
+        btnTranslate.setImageResource(R.drawable.ic_english_36dp);
+        ThemeUtils.setActiveIconTint(btnTranslate, translate);
         modeAuto = sp.getBoolean("imeModeAuto",false);
-        btnModeAuto.setImageResource(modeAuto ? R.drawable.ic_auto_on_36dp : R.drawable.ic_auto_off_36dp);
+        btnModeAuto.setImageResource(R.drawable.ic_auto_36dp);
+        ThemeUtils.setActiveIconTint(btnModeAuto, modeAuto);
         layoutButtons = view.findViewById(R.id.layout_buttons);
         checkRecordPermission();
 
@@ -275,7 +296,7 @@ public class WhisperInputMethodService extends InputMethodService {
 
         btnTranslate.setOnClickListener(v -> {
             translate = !translate;
-            btnTranslate.setImageResource(translate ? R.drawable.ic_english_on_36dp : R.drawable.ic_english_off_36dp);
+            ThemeUtils.setActiveIconTint(btnTranslate, translate);
         });
 
         btnEnter.setOnClickListener(v -> {
@@ -289,7 +310,7 @@ public class WhisperInputMethodService extends InputMethodService {
             editor.apply();
             layoutButtons.setVisibility(modeAuto ? View.GONE : View.VISIBLE);
             btnStop.setVisibility(modeAuto ? View.VISIBLE : View.GONE);
-            btnModeAuto.setImageResource(modeAuto ? R.drawable.ic_auto_on_36dp : R.drawable.ic_auto_off_36dp);
+            ThemeUtils.setActiveIconTint(btnModeAuto, modeAuto);
             switchToPreviousInputMethod();
         });
 
@@ -324,8 +345,10 @@ public class WhisperInputMethodService extends InputMethodService {
 
     private void updateLanguageUi() {
         boolean lang1Selected = isLang1Selected(sp.getInt("langSelected", 1));
-        btnLang1.setImageResource(lang1Selected ? R.drawable.ic_counter_1_on_36dp : R.drawable.ic_counter_1_off_36dp);
-        btnLang2.setImageResource(lang1Selected ? R.drawable.ic_counter_2_off_36dp : R.drawable.ic_counter_2_on_36dp);
+        btnLang1.setImageResource(R.drawable.ic_counter_1_36dp);
+        btnLang2.setImageResource(R.drawable.ic_counter_2_36dp);
+        ThemeUtils.setActiveIconTint(btnLang1, lang1Selected);
+        ThemeUtils.setActiveIconTint(btnLang2, !lang1Selected);
         String language1 = sp.getString("language1", "auto");
         String language2 = sp.getString("language2", "auto");
         boolean hideLangButtons = shouldHideLanguageButtons(language1, language2);

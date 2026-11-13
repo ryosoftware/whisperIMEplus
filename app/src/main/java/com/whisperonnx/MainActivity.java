@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Implementation of record button functionality
         btnRecord = findViewById(R.id.btnRecord);
+        ThemeUtils.setOnPrimaryIconTint(btnRecord);
 
         btnRecord.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {

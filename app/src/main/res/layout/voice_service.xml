@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/darkGrey"
+    android:background="?attr/colorSurfaceContainer"
     android:clipToPadding="false"
     android:padding="5dp">
 
@@ -12,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="false"
-        android:progressTint="@color/colorAccent"
-        android:progressBackgroundTint="@color/lightGrey"
-        android:indeterminateTint="@color/colorAccent"
+        android:progressTint="?attr/colorPrimary"
+        android:progressBackgroundTint="?attr/colorOutlineVariant"
+        android:indeterminateTint="?attr/colorPrimary"
         style="?android:attr/progressBarStyleHorizontal"/>
 
     <RelativeLayout
@@ -28,8 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:background="@color/darkGrey"
-            android:src="@drawable/ic_auto_off_36dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_auto_36dp"
+            android:tint="?attr/colorOnSurfaceVariant"
             android:contentDescription="@string/auto_button"/>
 
         <ImageButton
@@ -38,8 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/btnModeAuto"
-            android:background="@color/darkGrey"
-            android:src="@drawable/ic_counter_1_off_36dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_counter_1_36dp"
+            android:tint="?attr/colorOnSurfaceVariant"
             android:contentDescription="@string/lang1"/>
 
         <ImageButton
@@ -48,8 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/btnLang1"
-            android:background="@color/darkGrey"
-            android:src="@drawable/ic_counter_2_off_36dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_counter_2_36dp"
+            android:tint="?attr/colorOnSurfaceVariant"
             android:contentDescription="@string/lang2"/>
 
         <LinearLayout
@@ -63,8 +66,9 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/darkGrey"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_keyboard_36dp"
+                android:tint="?attr/colorOnSurfaceVariant"
                 android:contentDescription="@string/exit_button"/>
             <ImageButton
                 android:id="@+id/btnStop"
@@ -72,8 +76,9 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/darkGrey"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_stop_recording_36dp"
+                android:tint="?attr/colorOnSurfaceVariant"
                 android:contentDescription="@string/stop_button"/>
 
         </LinearLayout>
@@ -83,8 +88,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="@color/darkGrey"
-            android:src="@drawable/ic_english_off_36dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_english_36dp"
+            android:tint="?attr/colorOnSurfaceVariant"
             android:contentDescription="@string/translate"/>
 
     </RelativeLayout>
@@ -98,7 +104,7 @@
         android:textSize="20dp"
         android:textColor="@android:color/holo_red_dark" />
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_buttons"
         android:layout_marginHorizontal="5dp"
@@ -113,6 +119,7 @@
             android:layout_marginHorizontal="5dp"
             android:background="@drawable/rounded_button_background"
             android:src="@drawable/ic_mic_48dp"
+            android:tint="?attr/colorOnPrimary"
             android:contentDescription="@string/record_button"/>
         <ImageButton
             android:id="@+id/btnDel"
@@ -123,6 +130,7 @@
             android:layout_toStartOf="@id/btnEnter"
             android:background="@drawable/rounded_button_background"
             android:src="@drawable/ic_keyboard_del_48dp"
+            android:tint="?attr/colorOnPrimary"
             android:contentDescription="@string/delete_button"/>
 
         <ImageButton
@@ -134,6 +142,7 @@
             android:layout_alignParentEnd="true"
             android:background="@drawable/rounded_button_background"
             android:src="@drawable/ic_keyboard_return_48dp"
+            android:tint="?attr/colorOnPrimary"
             android:contentDescription="@string/return_button"/>
 
     </RelativeLayout>

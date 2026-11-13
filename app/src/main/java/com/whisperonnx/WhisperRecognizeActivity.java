@@ -31,6 +31,7 @@ import com.whisperonnx.asr.Recorder;
 import com.whisperonnx.asr.Whisper;
 import com.whisperonnx.asr.WhisperResult;
 import com.whisperonnx.utils.HapticFeedback;
+import com.whisperonnx.utils.ThemeUtils;
 
 import java.util.ArrayList;
 
@@ -89,13 +90,15 @@ public class WhisperRecognizeActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
         btnStop = findViewById(R.id.btnStop);
         btnRecord = findViewById(R.id.btnRecord);
+        ThemeUtils.setOnPrimaryIconTint(btnRecord);
         btnModeAuto = findViewById(R.id.btnModeAuto);
         processingBar = findViewById(R.id.processing_bar);
         tvLang = findViewById(R.id.tvLang);
         tvLang.setText(langCode);
 
         modeAuto = sp.getBoolean("imeModeAuto",false);
-        btnModeAuto.setImageResource(modeAuto ? R.drawable.ic_auto_on_36dp : R.drawable.ic_auto_off_36dp);
+        btnModeAuto.setImageResource(R.drawable.ic_auto_36dp);
+        ThemeUtils.setActiveIconTint(btnModeAuto, modeAuto);
 
         // Audio recording functionality
         mRecorder = new Recorder(this);
@@ -145,7 +148,7 @@ public class WhisperRecognizeActivity extends AppCompatActivity {
             editor.apply();
             btnRecord.setVisibility(modeAuto ? View.GONE : View.VISIBLE);
             btnStop.setVisibility(modeAuto ? View.VISIBLE : View.GONE);
-            btnModeAuto.setImageResource(modeAuto ? R.drawable.ic_auto_on_36dp : R.drawable.ic_auto_off_36dp);
+            ThemeUtils.setActiveIconTint(btnModeAuto, modeAuto);
             if (mWhisper != null) stopTranscription();
             setResult(RESULT_CANCELED, null);
             finish();

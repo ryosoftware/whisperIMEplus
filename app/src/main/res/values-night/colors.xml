@@ -2,6 +2,5 @@
 <resources>
     <color name="darkGrey">#555555</color>
     <color name="colorAccent">#ff6750A4</color>
-    <color name="colorAccentDark">#996750A4</color>
     <color name="windowBackground">#111111</color>
 </resources>

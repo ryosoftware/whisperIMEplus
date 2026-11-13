@@ -73,13 +73,10 @@ public class SettingsActivity extends AppCompatActivity {
         ImageButton btnLang2 = findViewById(R.id.btnLang2);
 
         langSelected = sp.getInt("langSelected", 1);
-        if (langSelected == 1) {
-            btnLang1.setImageResource(R.drawable.ic_counter_1_on_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_off_36dp);
-        } else {
-            btnLang1.setImageResource(R.drawable.ic_counter_1_off_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_on_36dp);
-        }
+        btnLang1.setImageResource(R.drawable.ic_counter_1_36dp);
+        btnLang2.setImageResource(R.drawable.ic_counter_2_36dp);
+        ThemeUtils.setActiveIconTint(btnLang1, langSelected == 1);
+        ThemeUtils.setActiveIconTint(btnLang2, langSelected == 2);
 
         btnLang1.setOnClickListener(v -> {
             String lang = sp.getString("language1", "auto");
@@ -88,8 +85,8 @@ public class SettingsActivity extends AppCompatActivity {
             editor.putString("language", lang);
             editor.apply();
             langSelected = 1;
-            btnLang1.setImageResource(R.drawable.ic_counter_1_on_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_off_36dp);
+            ThemeUtils.setActiveIconTint(btnLang1, true);
+            ThemeUtils.setActiveIconTint(btnLang2, false);
         });
 
         btnLang2.setOnClickListener(v -> {
@@ -99,8 +96,8 @@ public class SettingsActivity extends AppCompatActivity {
             editor.putString("language", lang);
             editor.apply();
             langSelected = 2;
-            btnLang1.setImageResource(R.drawable.ic_counter_1_off_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_on_36dp);
+            ThemeUtils.setActiveIconTint(btnLang1, false);
+            ThemeUtils.setActiveIconTint(btnLang2, true);
         });
 
         spinnerLanguage1IME = findViewById(R.id.spnrLanguage1_ime);

@@ -16,9 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="false"
-            android:progressTint="@color/colorAccent"
-            android:progressBackgroundTint="@color/lightGrey"
-            android:indeterminateTint="@color/colorAccent"
+            android:progressTint="?attr/colorPrimary"
+            android:progressBackgroundTint="?attr/colorOutlineVariant"
+            android:indeterminateTint="?attr/colorPrimary"
             style="?android:attr/progressBarStyleHorizontal"/>
 
         <RelativeLayout
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/btnCancel"
                 android:layout_marginStart="10dp"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="24dp"
                 android:text="auto"/>
             <ImageButton
@@ -41,8 +41,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:background="@color/darkGrey"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_cancel_36dp"
+                android:tint="?attr/colorOnSurfaceVariant"
                 android:contentDescription="@string/exit_button"/>
 
             <ImageButton
@@ -52,8 +53,9 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/darkGrey"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_stop_recording_36dp"
+                android:tint="?attr/colorOnSurfaceVariant"
                 android:contentDescription="@string/stop_button"/>
 
             <ImageButton
@@ -61,8 +63,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:background="@color/darkGrey"
-                android:src="@drawable/ic_auto_off_36dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_auto_36dp"
+                android:tint="?attr/colorOnSurfaceVariant"
                 android:contentDescription="@string/auto_button"/>
 
         </RelativeLayout>
@@ -82,6 +85,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_button_background"
                 android:src="@drawable/ic_mic_48dp"
+                android:tint="?attr/colorOnPrimary"
                 android:contentDescription="@string/record_button"/>
 
         </LinearLayout>
