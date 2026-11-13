@@ -299,8 +299,7 @@ public class WhisperInputMethodService extends InputMethodService {
             editor.putInt("langSelected", 1);
             editor.putString("language", lang);
             editor.apply();
-            btnLang1.setImageResource(R.drawable.ic_counter_1_on_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_off_36dp);
+            updateLanguageUi();
         });
 
         btnLang2.setOnClickListener(v -> {
@@ -309,27 +308,29 @@ public class WhisperInputMethodService extends InputMethodService {
             editor.putInt("langSelected", 2);
             editor.putString("language", lang);
             editor.apply();
-            btnLang1.setImageResource(R.drawable.ic_counter_1_off_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_on_36dp);
+            updateLanguageUi();
         });
 
         return view;
     }
 
+    static boolean isLang1Selected(int langSelected) {
+        return langSelected == 1;
+    }
+
+    static boolean shouldHideLanguageButtons(String language1, String language2) {
+        return language1.equals(language2);
+    }
+
     private void updateLanguageUi() {
-        int langSelected = sp.getInt("langSelected", 1);
-        if (langSelected == 1) {
-            btnLang1.setImageResource(R.drawable.ic_counter_1_on_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_off_36dp);
-        } else {
-            btnLang1.setImageResource(R.drawable.ic_counter_1_off_36dp);
-            btnLang2.setImageResource(R.drawable.ic_counter_2_on_36dp);
-        }
+        boolean lang1Selected = isLang1Selected(sp.getInt("langSelected", 1));
+        btnLang1.setImageResource(lang1Selected ? R.drawable.ic_counter_1_on_36dp : R.drawable.ic_counter_1_off_36dp);
+        btnLang2.setImageResource(lang1Selected ? R.drawable.ic_counter_2_off_36dp : R.drawable.ic_counter_2_on_36dp);
         String language1 = sp.getString("language1", "auto");
         String language2 = sp.getString("language2", "auto");
-        boolean isSameLang = language1.equals(language2);
-        btnLang1.setVisibility(isSameLang ? View.INVISIBLE : View.VISIBLE);
-        btnLang2.setVisibility(isSameLang ? View.INVISIBLE : View.VISIBLE);
+        boolean hideLangButtons = shouldHideLanguageButtons(language1, language2);
+        btnLang1.setVisibility(hideLangButtons ? View.INVISIBLE : View.VISIBLE);
+        btnLang2.setVisibility(hideLangButtons ? View.INVISIBLE : View.VISIBLE);
     }
 
     private void startRecording() {
