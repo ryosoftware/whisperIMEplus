@@ -1,3 +1,6 @@
+## ALL CREDIT GOES TO TANUJNOTES, THE DEVELOPER OF THE ORIGINAL AND VALUABLE WHISPER+.
+THE ONLY DIFFERENCE BETWEEN THIS FORK AND THE ORIGINAL IS THE THEME, THAT FOLLOWS SYSTEM THEME AND ACCENT.
+
 ```
 Google has announced that, starting in 2026/2027, all apps on certified Android devices
 will require the developer to submit personal identity details directly to Google.
