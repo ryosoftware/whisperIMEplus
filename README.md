@@ -39,8 +39,6 @@ By following these guidelines, you'll be able to enjoy accurate and efficient vo
 
 You can predefine 2 languages and quickly switch between them. You can also let the app translate your input to English.
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/de/packages/org.woheller69.whisperplus/)
-
 # License
 This work is licensed under GPLv3 license, © woheller69
 - This app is based on [whisperIME](https://github.com/woheller69/whisperIME), which is published under MIT license
