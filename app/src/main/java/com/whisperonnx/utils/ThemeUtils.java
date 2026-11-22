@@ -13,7 +13,7 @@ public class ThemeUtils {
 
     public static void setActiveIconTint(ImageView view, boolean active) {
         int attr = active
-                ? com.google.android.material.R.attr.colorPrimary
+                ? androidx.appcompat.R.attr.colorPrimary
                 : com.google.android.material.R.attr.colorOnSurfaceVariant;
         int color = MaterialColors.getColor(view, attr);
         view.setImageTintList(ColorStateList.valueOf(color));
