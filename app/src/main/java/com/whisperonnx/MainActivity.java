@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
         FreeDroidWarn.showWarningOnUpgrade(this, BuildConfig.VERSION_CODE);
-        if (GithubStar.shouldShowStarDialog(this)) GithubStar.starDialog(this, "https://github.com/woheller69/whisperIMEplus");
+        if (GithubStar.shouldShowStarDialog(this)) GithubStar.starDialog(this, "https://github.com/ryosoftware/whisperIMEplus");
         // Assume this Activity is the current activity, check record permission
         checkPermissions();
 
